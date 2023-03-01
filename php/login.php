@@ -5,7 +5,7 @@ require_once('../../../common/php/Database.php');
 
 //$_GET['data'] = '{"email":"odry.attila@keri.mako.hu","password":"1234Aa"}';
 
-$query =  "SELECT `id`, `type`, ".
+$query =  "SELECT *, ".
           "CONCAT_WS(' ', `prefix_name`, `last_name`, `middle_name`, `first_name`,  `suffix_name`) AS `name` ".
           "FROM `user` ".
           "WHERE `valid` = 1 AND `email` = :email AND BINARY `password` = :password;";

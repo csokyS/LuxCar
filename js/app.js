@@ -142,7 +142,7 @@
         },
         login: {
           email: localStorage.getItem("userEmail"),
-          password: '1234Aa'
+          password: ''
         },
         register: {
           prefixName: null,
@@ -156,6 +156,19 @@
           email2: null,
           password: null,
           password2: null,
+          code: util.getTestCode(),
+          testcode: null
+        },
+        profile: {
+          prefixName: null,
+          firstName: null,
+          middleName: null,
+          lastName: null,
+          postfixName: null,
+          gender: null,
+          born: null,
+          email: null,
+          password: null,
           code: util.getTestCode(),
           testcode: null
         }
@@ -260,7 +273,7 @@
                 $scope.user.name  = data[0].name;
                 localStorage.setItem("userEmail", $scope.model.login.email);
                 $scope.$applyAsync();
-                $scope.reset(type);
+                //$scope.reset(type);
               } else {
                 alert('Hibás felhasználó vagz jelszó!');
               }
@@ -271,8 +284,16 @@
             result = Object.keys($scope.model[type])
                            .filter((key) => !['code','testcode','email2','password2'].includes(key))
                            .reduce((o, k) => { return Object.assign(o, { [k]: $scope.model[type][k] })}, {});
-            console.log(result);
-            $scope.reset(type);
+            // Check user
+            http.request({
+              url: "./php/register.php",
+              method: 'POST',
+              data: result
+            })
+            .then(data => {
+              console.log(data);
+            })
+            .catch(e => console.log(e));
             break;
           default:
             return;
@@ -294,7 +315,7 @@
         $scope.user.type  = null;
         $scope.user.name  = null;
         $scope.$applyAsync();
-        $scope.reset('login');
+        //$scope.reset('login');
       }
 
       // Run check for or model
