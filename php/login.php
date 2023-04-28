@@ -1,45 +1,26 @@
 <?php
 
-// Require file
-require_once('../../../common/php/Database.php');
-
-//$_GET['data'] = '{"email":"odry.attila@keri.mako.hu","password":"1234Aa"}';
-
-$query =  "SELECT *, ".
-          "CONCAT_WS(' ', `prefix_name`, `last_name`, `middle_name`, `first_name`,  `suffix_name`) AS `name` ".
-          "FROM `user` ".
-          "WHERE `valid` = 1 AND `email` = :email AND BINARY `password` = :password;";
-
-// Set result
-$result = null;
+require_once('../../common/php/environment.php');
 
 // Get arguments
 $args = Util::getArgs();
 
-// Connect to MySQL server
-$db = new Database('luxcar');
+// Connect to database
+$db = new Database();
 
-// Set transaction
-$transaction = new Transaction(array(
-  "query"     => $query,
-  "params"    => $args,
-  "fetchMode" => PDO::FETCH_ASSOC,
-));
+$query = "SELECT *,
+          CONCAT_WS(' ',`prefix_name`,`last_name`,`middle_name`,`first_name`,`suffix_name`) AS `name`
+          FROM `user`
+          WHERE `valid` = 1 AND `email` = :email AND BINARY `password` = :password
+          LIMIT 1;";
 
 // Execute query
-$db->execute($transaction);
+$result = $db->execute($query, $args);
 
-// Check is error
-if (!$db->is_error()) {
+// Check/Convert result
+if (!is_null($result)) $result = $result[0];
 
-        // Set result
-        $result = $db->get_data();
-
-        // Set error
-} else  Util::setError($db->get_error(), false);
-
-// Disconect
+// Disconnect
 $db = null;
 
-// Set response
 Util::setResponse($result);
