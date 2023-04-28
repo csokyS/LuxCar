@@ -29,8 +29,6 @@
 							class="form-select w-50"
 							ng-model="model.rent.carID"
 							ng-change="change('rent')"
-							ng-clear-icon
-						 	ng-checkmark
 							required>
 				<option value="" selected hidden>Választás</option>
 				<option value="{{car.id}}" ng-repeat="car in cars">
@@ -60,10 +58,7 @@
 						 ng-trim="false"
 						 required
 						 ng-model="model.rent.start" 
-						 ng-change="change('rent')"
-						 ng-clear-icon
-						 ng-checkmark
-						 ng-white-space>
+						 ng-change="change('rent')">
 		</div>
 
 		<!-- Rent end -->
@@ -87,10 +82,7 @@
 						 ng-trim="false"
 						 required
 						 ng-model="model.rent.end" 
-						 ng-change="change('rent')"
-						 ng-clear-icon
-						 ng-checkmark
-						 ng-white-space>
+						 ng-change="change('rent')">
 		</div>
 
 		<!-- Buttons -->
