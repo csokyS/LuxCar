@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Nov 28. 21:14
+-- Létrehozás ideje: 2023. Máj 01. 21:32
 -- Kiszolgáló verziója: 10.4.6-MariaDB
 -- PHP verzió: 7.3.8
 
@@ -179,45 +179,37 @@ INSERT INTO `fuel` (`id`, `name`) VALUES
 
 CREATE TABLE `user` (
   `id` mediumint(9) NOT NULL,
-  `type` char(1) NOT NULL,
-  `prefix_name` varchar(20) DEFAULT 'NULL',
-  `first_name` varchar(50) NOT NULL,
-  `middle_name` varchar(50) DEFAULT 'NULL',
-  `last_name` varchar(50) NOT NULL,
-  `suffix_name` varchar(20) DEFAULT NULL,
+  `name` varchar(200) NOT NULL,
   `born` date DEFAULT NULL,
   `gender` char(1) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(20) DEFAULT NULL,
-  `valid` tinyint(1) NOT NULL DEFAULT 1,
-  `last_logon` timestamp NULL DEFAULT NULL,
-  `attempts` tinyint(4) NOT NULL DEFAULT 0,
-  `last_attempt` timestamp NULL DEFAULT NULL
+  `valid` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- A tábla adatainak kiíratása `user`
 --
 
-INSERT INTO `user` (`id`, `type`, `prefix_name`, `first_name`, `middle_name`, `last_name`, `suffix_name`, `born`, `gender`, `email`, `password`, `valid`, `last_logon`, `attempts`, `last_attempt`) VALUES
-(1, 'A', NULL, 'Attila', NULL, 'Ódry', NULL, '1964-03-08', 'M', 'odry.attila@keri.mako.hu', '1234Aa', 1, NULL, 0, NULL),
-(2, 'A', NULL, 'Félix', 'Márk', 'Bálint', NULL, '2003-08-02', 'M', 'balint.mark.felix@keri.mako.hu', '1234Aa', 1, NULL, 0, NULL),
-(3, 'A', NULL, 'István', NULL, 'Balla', NULL, '2003-06-07', 'M', 'balla.istvan@keri.mako.hu', '1234Aa', 1, NULL, 0, NULL),
-(4, 'A', NULL, 'András', NULL, 'Baranyi', NULL, '2003-06-20', 'M', 'baranyi.andras@keri.mako.hu', '1234Aa', 1, NULL, 0, NULL),
-(5, 'A', NULL, 'Antal', 'Benjámin', 'Bárdos', NULL, '2003-04-11', 'M', 'bardos.benjamin.antal@keri.mako.hu', '1234Aa', 0, NULL, 0, NULL),
-(6, 'A', NULL, 'Kristóf', 'Ferenc', 'Csáki', NULL, '2002-10-24', 'M', 'csaki.ferenc.kristof@keri.mako.hu', '1234Aa', 1, NULL, 0, NULL),
-(7, 'A', NULL, 'Richárd', NULL, 'Csomor', NULL, '2003-04-17', 'M', 'csomor.richard@keri.mako.hu', '1234Aa', 1, NULL, 0, NULL),
-(8, 'A', NULL, 'Ivonn', 'Dóra', 'Dávidr', NULL, '2003-09-21', 'F', 'davidr.dora.ivonn@keri.mako.hu', '1234Aa', 1, NULL, 0, NULL),
-(9, 'A', NULL, 'Bence', 'Krisztián', 'Gyulai', NULL, '2003-07-08', 'M', 'gyulai.krisztian.bence@keri.mako.hu', '1234Aa', 1, NULL, 0, NULL),
-(10, 'A', NULL, 'Fanni', NULL, 'Juhász', NULL, '2003-12-23', 'F', 'juhasz.fanni@keri.mako.hu', '1234Aa', 1, NULL, 0, NULL),
-(11, 'A', NULL, 'Nikolett', NULL, 'Lantos', NULL, '2003-06-23', 'F', 'lantos.nikolett@keri.mako.hu', '1234Aa', 0, NULL, 0, NULL),
-(12, 'A', NULL, 'Dániel', NULL, 'Lázár', NULL, '2003-05-12', 'M', 'lazar.daniel@keri.mako.hu', '1234Aa', 1, NULL, 0, NULL),
-(13, 'A', NULL, 'Levente', NULL, 'Luncz', NULL, '2004-03-12', 'M', 'luncz.levente@keri.mako.hu', '1234Aa', 1, NULL, 0, NULL),
-(14, 'A', NULL, 'Letícia', NULL, 'Morvai', NULL, '2003-09-11', 'F', 'morvai.leticia@keri.mako.hu', '1234Aa', 1, NULL, 0, NULL),
-(15, 'A', NULL, 'Ádám', 'Ákos', 'Racskó', NULL, '2003-03-10', 'M', 'racsko.akos.adam@keri.mako.hu', '1234Aa', 1, NULL, 0, NULL),
-(16, 'A', NULL, 'Bence', NULL, 'Sípos', NULL, '2001-10-11', 'M', 'sipos.bence@keri.mako.hu', '1234Aa', 1, NULL, 0, NULL),
-(17, 'A', NULL, 'Regina', 'Viktória', 'Túri', NULL, '2003-02-24', 'F', 'turi.viktoria.regina@keri.mako.hu', '1234Aa', 1, NULL, 0, NULL),
-(18, 'A', NULL, 'Márk', 'Tamás', 'Varga', NULL, '2003-10-26', 'M', 'varga.tamas.mark@keri.mako.hu', '1234Aa', 1, NULL, 0, NULL);
+INSERT INTO `user` (`id`, `name`, `born`, `gender`, `email`, `password`, `valid`) VALUES
+(1, 'Ódry Attila', '1964-03-08', 'M', 'odry.attila@keri.mako.hu', '1234Aa', 1),
+(2, 'Bálint Márk Félix', '2003-08-02', 'M', 'balint.mark.felix@keri.mako.hu', '1234Aa', 1),
+(3, 'Balla István', '2003-06-07', 'M', 'balla.istvan@keri.mako.hu', '1234Aa', 1),
+(4, 'Baranyi András', '2003-06-20', 'M', 'baranyi.andras@keri.mako.hu', '1234Aa', 1),
+(5, 'Bárdos Benjámin Antal', '2003-04-11', 'M', 'bardos.benjamin.antal@keri.mako.hu', '1234Aa', 0),
+(6, 'Csáki Ferenc Kristóf', '2002-10-24', 'M', 'csaki.ferenc.kristof@keri.mako.hu', '1234Aa', 1),
+(7, 'Csomor Richárd', '2003-04-17', 'M', 'csomor.richard@keri.mako.hu', '1234Aa', 1),
+(8, 'Dávidr Dóra Ivonn', '2003-09-21', 'F', 'davidr.dora.ivonn@keri.mako.hu', '1234Aa', 1),
+(9, 'Gyulai Krisztián Bence', '2003-07-08', 'M', 'gyulai.krisztian.bence@keri.mako.hu', '1234Aa', 1),
+(10, 'Juhász Fanni', '2003-12-23', 'F', 'juhasz.fanni@keri.mako.hu', '1234Aa', 1),
+(11, 'Lantos Nikolett', '2003-06-23', 'F', 'lantos.nikolett@keri.mako.hu', '1234Aa', 0),
+(12, 'Lázár Dániel', '2003-05-12', 'M', 'lazar.daniel@keri.mako.hu', '1234Aa', 1),
+(13, 'Luncz Levente', '2004-03-12', 'M', 'luncz.levente@keri.mako.hu', '1234Aa', 1),
+(14, 'Morvai Letícia', '2003-09-11', 'F', 'morvai.leticia@keri.mako.hu', '1234Aa', 1),
+(15, 'Racskó Ákos Ádám', '2003-03-10', 'M', 'racsko.akos.adam@keri.mako.hu', '1234Aa', 1),
+(16, 'Sípos Bence', '2001-10-11', 'M', 'sipos.bence@keri.mako.hu', '1234Aa', 1),
+(17, 'Túri Viktória Regina', '2003-02-24', 'F', 'turi.viktoria.regina@keri.mako.hu', '1234Aa', 1),
+(18, 'Varga Tamás Márk', '2003-10-26', 'M', 'varga.tamas.mark@keri.mako.hu', '1234Aa', 1);
 
 -- --------------------------------------------------------
 
@@ -227,13 +219,25 @@ INSERT INTO `user` (`id`, `type`, `prefix_name`, `first_name`, `middle_name`, `l
 
 CREATE TABLE `user-rent` (
   `id` int(11) NOT NULL,
-  `carID` smallint(6) NOT NULL,
-  `rent` date NOT NULL,
+  `user_id` mediumint(9) NOT NULL,
+  `car_id` smallint(6) NOT NULL,
+  `date` date NOT NULL,
   `start` date NOT NULL,
   `end` date NOT NULL,
-  `discount` tinyint(4) DEFAULT NULL,
+  `day` tinyint(3) UNSIGNED NOT NULL,
+  `tariff` int(11) NOT NULL,
+  `total` int(10) UNSIGNED NOT NULL,
   `valid` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- A tábla adatainak kiíratása `user-rent`
+--
+
+INSERT INTO `user-rent` (`id`, `user_id`, `car_id`, `date`, `start`, `end`, `day`, `tariff`, `total`, `valid`) VALUES
+(1, 1, 17, '2023-05-01', '2023-05-01', '2023-05-10', 9, 100000, 900000, 1),
+(2, 1, 4, '2023-05-01', '2023-05-01', '2023-05-02', 1, 35000, 35000, 1),
+(3, 1, 19, '2023-05-01', '2023-05-01', '2023-05-02', 1, 135000, 135000, 1);
 
 --
 -- Indexek a kiírt táblákhoz
@@ -304,13 +308,13 @@ ALTER TABLE `color`
 -- AUTO_INCREMENT a táblához `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT a táblához `user-rent`
 --
 ALTER TABLE `user-rent`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -12,127 +12,29 @@
 	<!-- Register form -->
 	<form class="w-50 d-inline-block mt-3" action="#">
 
-		<!-- User prefix name -->
+		<!-- User name -->
 		<div class="input-item input-group input-row mb-3">
 
 			<!-- Label -->
 			<div class="col-12 col-lg-6 text-start text-lg-end px-0 px-lg-3">
-				<label for="register-prefixName" 
-							 class="col-form-label">
-					Előtag:
-				</label>
-			</div>
-		
-			<!-- Input user prefix name -->
-			<input id="register-prefixName" 
-						 type="text" 
-						 class="form-control col-12 col-lg-6"
-						 placeholder="előtag"
-						 spellcheck="false" 
-						 autocomplete="off" 
-						 ng-trim="false"
-						 maxlength="20"
-						 ng-model="model.register.prefixName">
-		</div>
-	
-		<!-- User first name -->
-		<div class="input-item input-group input-row mb-3">
-
-			<!-- Label -->
-			<div class="col-12 col-lg-6 text-start text-lg-end px-0 px-lg-3">
-				<label for="register-firstName" 
-							 class="col-form-label">
+				<label for="register-name" class="col-form-label">
 					<span class="text-danger fw-bold">*</span>
-					<span>Keresztnév:</span>
+					<span>Név:</span>
 				</label>
 			</div>
 		
-			<!-- Input user first name -->
-			<input id="register-firstName" 
+			<!-- Input user name -->
+			<input id="register-name" 
 						 type="text" 
 						 class="form-control col-12 col-lg-6"
-						 placeholder="keresztnév"
+						 placeholder="név"
 						 spellcheck="false" 
 						 autocomplete="off" 
 						 ng-trim="false"
-						 required
-						 maxlength="50"
-						 ng-model="model.register.firstName" 
-						 ng-change="change('register')">
+						 maxlength="200"
+						 ng-model="model.register.name"
+						 required>
 		</div>
-	
-		<!-- User middle name -->
-		<div class="input-item input-group input-row mb-3">
-
-			<!-- Label -->
-			<div class="col-12 col-lg-6 text-start text-lg-end px-0 px-lg-3">
-				<label for="register-middleName" 
-							 class="col-form-label">
-					Középsőnév:
-				</label>
-			</div>
-		
-			<!-- Input user middle name -->
-			<input id="register-middleName" 
-						 type="text" 
-						 class="form-control col-12 col-lg-6" 
-						 placeholder="középsőnév" 
-						 spellcheck="false" 
-						 autocomplete="off" 
-						 ng-trim="false"
-						 maxlength="50"
-						 ng-model="model.register.middleName">
-		</div>
-	
-		<!-- User last name -->
-		<div class="input-item input-group input-row mb-3">
-
-			<!-- Label -->
-			<div class="col-12 col-lg-6 text-start text-lg-end px-0 px-lg-3">
-				<label for="register-lastName" 
-							 class="col-form-label">
-					<span class="text-danger fw-bold">*</span>
-					<span>Vezetéknév:</span>
-				</label>
-			</div>
-		
-			<!-- Input user last name -->
-			<input id="register-lastName" 
-						 type="text" 
-						 class="form-control col-12 col-lg-6"
-						 placeholder="vazetéknév"
-						 spellcheck="false" 
-						 autocomplete="off" 
-						 ng-trim="false"
-						 required
-						 maxlength="50"
-						 ng-model="model.register.lastName" 
-						 ng-change="change('register')">
-		</div>
-	
-		<!-- User postfix name -->
-		<div class="input-item input-group input-row mb-3">
-
-			<!-- Label -->
-			<div class="col-12 col-lg-6 text-start text-lg-end px-0 px-lg-3">
-				<label for="register-postfixName" 
-							 class="col-form-label">
-					Utótag:
-				</label>
-			</div>
-		
-			<!-- Input user postfix name -->
-			<input id="register-postfixName" 
-						 type="text" 
-						 class="form-control col-12 col-lg-6"
-						 placeholder="utótag" 
-						 spellcheck="false" 
-						 autocomplete="off" 
-						 ng-trim="false"
-						 maxlength="20"
-						 ng-model="model.register.postfixName">
-		</div>
-		<hr>
 	
 		<!-- User gender -->
 		<div class="input-item input-group input-row mb-3">
@@ -200,7 +102,9 @@
 						 ng-trim="false"
 						 required
 						 ng-model="model.register.born" 
-						 ng-change="change('register')">
+						 ng-change="change('register')"
+						 max="{{model.register.max}}"
+						 required>
 		</div>
 		<hr>
 
@@ -227,7 +131,8 @@
 						 required
 						 maxlength="50"
 						 ng-model="model.register.email" 
-						 ng-change="change('register')">
+						 ng-change="change('register')"
+						 required>
 		</div>
 
 		<!-- Email again -->
@@ -253,7 +158,8 @@
 						 required
 						 maxlength="50"
 						 ng-model="model.register.email2" 
-						 ng-change="change('register')">
+						 ng-change="change('register')"
+						 required>
 		</div>
 		<hr>
 

@@ -1,0 +1,46 @@
+<!-- Price list -->
+<div class="row mt-4">
+	<div id="rentails-list"
+			 class="col-12 col-sm-11 col-md-10 col-lg-8 col-xl-6 mx-auto">
+
+		<!-- Table -->
+		<table class="table table-sm shadow caption-top
+									table-bordered table-striped table-hover">
+
+			<!-- Caption -->
+			<caption class="display-6 text-center">Kölcsönzéseim</caption>
+
+			<!-- Head -->
+			<thead class="table-light">
+				<tr>
+					<th class="text-end">Azon.</th>
+					<th class="text-start">Autó</th>
+					<th class="text-center">Dátum</th>
+					<th class="text-center">Kezdete</th>
+					<th class="text-center">Vége</th>
+					<th class="text-center">Nap</th>
+					<th class="text-center">Egységár</th>
+					<th class="text-center">Összeg</th>
+				</tr>
+			</thead>
+
+			<!-- Body -->
+			<tbody>
+				<tr ng-repeat="rent in rentails track by $index"
+						ng-if="rentails.length">
+					<td class="text-end text-nowrap">{{rent.id}}</td>
+					<td class="text-start text-nowrap">{{rent.car_name}}</td>
+					<td class="text-center text-nowrap">{{rent.date}}</td>
+					<td class="text-center text-nowrap">{{rent.start}}</td>
+					<td class="text-center text-nowrap">{{rent.end}}</td>
+					<td class="text-end text-nowrap">{{rent.day}}</td>
+					<td class="text-end text-nowrap">{{rent.tariff | numSep}}</td>
+					<td class="text-end text-nowrap">{{rent.total | numSep}}</td>
+				</tr>
+				<tr ng-if="!rentails.length">
+					<td colspan="8">üres</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

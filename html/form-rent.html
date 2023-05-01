@@ -17,7 +17,7 @@
 
 			<!-- Label -->
 			<div class="col-12 col-xl-6 text-start text-xl-end px-0 px-xl-3">
-				<label for="select-car" 
+				<label for="rent-car_id" 
 							 class="col-form-label">
 					<span class="text-danger fw-bold">*</span>
 					<span>Autó:</span>
@@ -25,9 +25,9 @@
 			</div>
 		
 			<!-- Select car -->
-			<select id="rent-carID" 
+			<select id="rent-car_id" 
 							class="form-select w-50"
-							ng-model="model.rent.carID"
+							ng-model="model.rent.car_id"
 							ng-change="change('rent')"
 							required>
 				<option value="" selected hidden>Választás</option>
@@ -57,7 +57,8 @@
 						 autocomplete="off" 
 						 ng-trim="false"
 						 required
-						 ng-model="model.rent.start" 
+						 ng-model="model.rent.start"
+						 min="{{model.rent.min}}"
 						 ng-change="change('rent')">
 		</div>
 
@@ -81,7 +82,8 @@
 						 autocomplete="off" 
 						 ng-trim="false"
 						 required
-						 ng-model="model.rent.end" 
+						 ng-model="model.rent.end"
+						 min="{{model.rent.min}}" 
 						 ng-change="change('rent')">
 		</div>
 

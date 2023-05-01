@@ -8,17 +8,45 @@ $args = Util::getArgs();
 // Connect to database
 $db = new Database();
 
-$query = "SELECT *,
-          CONCAT_WS(' ',`prefix_name`,`last_name`,`middle_name`,`first_name`,`suffix_name`) AS `name`
+// Set query
+$query = "SELECT  `id`,
+                  `name`
           FROM `user`
-          WHERE `valid` = 1 AND `email` = :email AND BINARY `password` = :password
+          WHERE `email` = :email AND 
+                BINARY `password` = :password AND
+                `valid` = 1
           LIMIT 1;";
 
 // Execute query
 $result = $db->execute($query, $args);
 
 // Check/Convert result
-if (!is_null($result)) $result = $result[0];
+if (!is_null($result)) {
+
+      $result = array(
+            'user' => $result[0]
+      );
+
+      // Set query
+      $query =    "SELECT  `user-rent`.`id` AS `id`,
+                           `car`.`name` AS `car_name`,
+                           `user-rent`.`date` AS `date`, 
+                           `user-rent`.`start` AS `start`, 
+                           `user-rent`.`end` AS `end`, 
+                           `user-rent`.`day` AS `day`, 
+                           `user-rent`.`tariff` AS `tariff`, 
+                           `user-rent`.`total` AS `total`
+                  FROM `user-rent`
+                  INNER JOIN `car` ON `car`.`id` = `user-rent`.`car_id`
+                  WHERE `user-rent`.`user_id` = :user_id AND 
+                        `user-rent`.`valid` = 1
+                  ORDER BY `user-rent`.`start`;";
+
+      // Execute query
+      $result['rentails'] =   $db->execute($query, array(
+                                    'user_id' => $result['user']['id']
+                              ));
+}
 
 // Disconnect
 $db = null;

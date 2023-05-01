@@ -71,6 +71,24 @@
               </button>
             </li>
 
+            <!-- Rentals -->
+            <li class="nav-item nav-item-tab mx-2 pb-1 col-12 col-md-6 col-lg-auto text-center"
+                role="presentation"
+                ng-if="user.id">
+
+              <!-- Button -->
+              <button id="form-rentals-tab" 
+                      class="btn btn-outline-secondary ms-2 mb-2 btn-common btnClickEffect"
+                      data-bs-toggle="pill"
+                      data-bs-target="#form-rentals"
+                      role="tab" 
+                      type="button" 
+                      aria-controls="form-rentals"
+                      aria-selected="false">
+                Kölcsönzéseim
+              </button>
+            </li>
+
             <!-- Login -->
             <li class="nav-item nav-item-tab mx-2 pb-1 col-12 col-md-6 col-lg-auto text-center"
                 role="presentation">
@@ -130,6 +148,14 @@
                  ng-include src="'./html/form-rent.html'">
             </div>
 
+            <!-- Rentals panel -->
+            <div id="form-rentals" 
+                 class="tab-pane fade p-3 text-center"
+                 role="tabpanel"
+                 aria-labelledby="form-rentals-tab"
+                 ng-include src="'./html/rentals.html'">
+            </div>
+            
             <!-- Login panel -->
             <div id="form-login" 
                  class="tab-pane fade p-3 text-center"
