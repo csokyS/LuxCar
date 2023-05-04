@@ -90,6 +90,7 @@
 		}
 	])
 
+  
   // Rent/Login/Register controller
   .controller('rentController', [
     '$rootScope',
