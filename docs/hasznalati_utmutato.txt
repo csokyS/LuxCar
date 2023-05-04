@@ -1,11 +1,11 @@
 Használati útmutató az oldal működéséhez
 Állományok:
-  A htdoc mappába létrekell hozni egy vizsgaremek mappát, azon belül egy projects mappát.
+  A htdocs mappába létre kell hozni egy vizsgaremek mappát, azon belül egy projects mappát.
   A projects mappába kell tenni a LuxCar mappát.
   LuxCar mappából a common és a components mappát áthelyezni a vizsgaremek mappába.
 
 Adatbázis: 
-  XAMPP felületén egy luxcar nevű adatbázit kell létrehzoni utf8_hungarian_ci nyelven.
+  XAMPP felületén egy luxcar nevű adatbázist kell létrehzoni utf8_hungarian_ci kódolással.
   LuxCar/db mappából feltölteni a luxcar.sql fájlt.
   
 Oldal indítása:
