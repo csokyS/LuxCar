@@ -1,0 +1,12 @@
+Használati útmutató az oldal működéséhez
+Állományok:
+  A htdoc mappába létrekell hozni egy vizsgaremek mappát, azon belül egy projects mappát.
+  A projects mappába kell tenni a LuxCar mappát.
+  LuxCar mappából a common és a components mappát áthelyezni a vizsgaremek mappába.
+
+Adatbázis: 
+  XAMPP felületén egy luxcar nevű adatbázit kell létrehzoni utf8_hungarian_ci nyelven.
+  LuxCar/db mappából feltölteni a luxcar.sql fájlt.
+  
+Oldal indítása:
+  Chrome keresőjébe az alábbi útvonalon lehet elérni az oldalt: localhost/projects/vizsgaremek/luxcar
