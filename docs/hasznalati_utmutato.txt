@@ -9,4 +9,4 @@ Adatbázis:
   LuxCar/db mappából feltölteni a luxcar.sql fájlt.
   
 Oldal indítása:
-  Chrome keresőjébe az alábbi útvonalon lehet elérni az oldalt: localhost/projects/vizsgaremek/luxcar
+  Chrome keresőjébe az alábbi útvonalon lehet elérni az oldalt: localhost/projects/vizsgaremek/luxcar.
